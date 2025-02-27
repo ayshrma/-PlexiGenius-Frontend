@@ -1,24 +1,86 @@
-import React, { useState } from "react";
-import axios from "axios";
-import "./Form.css";
+// import axios from "axios";
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
-export default function LoginForm() {
-  const [data, setData] = useState({ email: "", password: "" });
+// export default function Form() {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [error, setError] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const navigate = useNavigate();
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+//     setError(null);
+//     setLoading(true);
+
+//     try {
+//       const response = await axios.post("http://localhost:8000/login", {
+//         email,
+//         password,
+//       });
+
+//       navigate("/employeemanagement")
+//     } catch (err) {
+//       setError("Invalid email or password");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h1>Login</h1>
+//       <form onSubmit={handleLogin}>
+//         <input
+//           type="email"
+//           placeholder="Email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+//         <br />
+//         <input
+//           type="password"
+//           placeholder="Password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+//         <br />
+//         {error && <p style={{ color: "red" }}>{error}</p>}
+//         <button type="submit" disabled={loading}>
+//           {loading ? "Logging in..." : "Submit"}
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
+
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Form.css"; // Import the CSS file
+
+export default function Form() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError(null);
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:8000/auth/login", data);
-      alert("Login Successful!");
+      const response = await axios.post("http://localhost:8000/login", {
+        email,
+        password,
+      });
+
+      navigate("/employeemanagement");
     } catch (err) {
       setError("Invalid email or password");
     } finally {
@@ -27,37 +89,31 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-box">
-        <h2 className="form-title">Admin Login</h2>
-        <form onSubmit={handleSubmit} className="login-form">
-          <input 
-            type="email" 
-            name="email" 
-            value={data.email} 
-            onChange={handleChange} 
-            placeholder="Email"
-            required 
-            className="form-input"
-          />
-          
-          <input 
-            type="password" 
-            name="password" 
-            value={data.password} 
-            onChange={handleChange} 
-            placeholder="Password"
-            required 
-            className="form-input"
-          />
-          
-          {error && <p className="error-text">{error}</p>}
-          
-          <button type="submit" disabled={loading} className="form-button">
-            {loading ? "Logging in..." : "Login"}
-          </button>
-        </form>
-      </div>
+    <div className="login-container">
+      {/* <h1>Login</h1> */}
+      <form onSubmit={handleLogin} className="login-form">
+      <h1>Log In</h1>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="input-field"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          className="input-field"
+        />
+        {error && <p className="error-message">{error}</p>}
+        <button type="submit" disabled={loading} className="login-button">
+          {loading ? "Logging in..." : "Submit"}
+        </button>
+      </form>
     </div>
   );
 }

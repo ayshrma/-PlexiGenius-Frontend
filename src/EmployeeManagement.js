@@ -1,9 +1,7 @@
-
-
 import { useState, useEffect } from "react";
-import "./EmployeeManagement.css"; // Import external CSS
+import "./EmployeeManagement.css"; // 
 
-const API_URL = "http://localhost:8000/employees"; // Backend API URL
+const API_URL = "http://localhost:8000/employees";
 
 const EmployeeManagement = () => {
   const [employees, setEmployees] = useState([]);
@@ -38,7 +36,7 @@ const EmployeeManagement = () => {
     }
     try {
       let response;
-      if (editingId) {
+      if (editingId) { 
         response = await fetch(`${API_URL}/${editingId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

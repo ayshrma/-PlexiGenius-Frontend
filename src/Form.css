@@ -1,103 +1,73 @@
-/* General Reset */
+/* General styling */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
-/* Full-page Background */
 .login-container {
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: #fff; /* Pure white background */
+  background-color: #867777;
 }
 
-/* Login Box */
 .login-form {
-  background: #fff; /* White background */
-  padding: 2.5rem;
+  background-color: #fff;
+  padding: 40px;
   border-radius: 10px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  width: 90%;
-  max-width: 400px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
   text-align: center;
-  border: 1px solid #000; /* Black border */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 300px;
 }
 
-/* Form Title */
-.login-form h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  color: #000; /* Black text */
+h1 {
+  margin-bottom: 20px;
+  color: #000;
+  font-size: 24px;
 }
 
-/* Input Fields */
-.login-form input {
+.input-field {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
-  border: 1px solid #000; /* Black border */
-  border-radius: 6px;
-  font-size: 1rem;
-  background: #fff; /* White background */
-  color: #000; /* Black text */
-  outline: none;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #000;
 }
 
-.login-form input::placeholder {
-  color: #333; /* Dark gray for better readability */
+.input-field::placeholder {
+  color: #333;
 }
 
-/* Error Message */
 .error-message {
   color: red;
-  font-size: 0.9rem;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 
-/* Submit Button */
-.login-form button {
+.login-button {
   width: 100%;
   padding: 12px;
-  background: #000; /* Black button */
-  color: white; /* White text */
+  font-size: 16px;
+  background-color: rgb(181, 169, 169);
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 5px;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
-  font-weight: bold;
-  text-transform: uppercase;
+  transition: all 0.3s;
 }
 
-.login-form button:hover {
-  background: #333; /* Slightly lighter black */
+.login-button:hover {
+  background-color: gray;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-  .login-form {
-      width: 95%;
-      padding: 2rem;
-  }
-
-  .login-form h2 {
-      font-size: 1.6rem;
-  }
-
-  .login-form input {
-      padding: 10px;
-  }
-
-  .login-form button {
-      padding: 10px;
-  }
+.login-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
 }
